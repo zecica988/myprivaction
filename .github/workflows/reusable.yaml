@@ -15,7 +15,7 @@ jobs:
     name: Pass input and secrets to linter
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/workflows/linter
+      - uses: ./.github/workflows/linter.yaml
         with:
           username: ${{ inputs.username }}
           token: ${{ secrets.token }}
