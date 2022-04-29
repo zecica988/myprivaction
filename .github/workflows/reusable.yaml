@@ -12,14 +12,11 @@ on:
 
 jobs:
   example_job:
-    name: Pass input and secrets to my-action
+    name: Pass input and secrets to linter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: ./.github/workflows/my-action
+      - uses: ./.github/workflows/linter
         with:
           username: ${{ inputs.username }}
           token: ${{ secrets.token }}

@@ -1,0 +1,21 @@
+name: Lint Code Base
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Megalinter
+      uses: megalinter/megalinter/flavors/python@beta
+      env:
+        ENABLE: PYTHON,YAML,BASH
+        FILTER_REGEX_EXCLUDE: ('*\.config\.py'|'ansible-playbooks/bucket\.*')
+        EXCLUDED_DIRECTORIES: workflows
