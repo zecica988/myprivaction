@@ -16,3 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: ./.github/workflows/linter
+        with:
+          username: ${{ inputs.username }}
+          token: ${{ secrets.token }}
