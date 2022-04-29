@@ -4,6 +4,7 @@ on:
   workflow_call:
     inputs:
       lints:
+        type: string
         default: PYTHON,YAML,BASH
 
 jobs:
