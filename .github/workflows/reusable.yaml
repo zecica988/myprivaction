@@ -15,7 +15,6 @@ jobs:
     name: Pass input and secrets to linter
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
       - uses: ./.github/workflows/linter
         with:
           username: ${{ inputs.username }}
