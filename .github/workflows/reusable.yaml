@@ -1,22 +1,23 @@
-name: Reusable workflow example
+name: Lint Code Base
 
 on:
   workflow_call:
     inputs:
-      username:
-        required: true
+      lints:
         type: string
-    secrets:
-      token:
-        required: true
 
 jobs:
-  example_job:
-    name: Pass input and secrets to linter
+  build:
+    name: Lint Code Base
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./.github/workflows/linter.yaml
-        with:
-          username: ${{ inputs.username }}
-          token: ${{ secrets.token }}
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Megalinter
+      uses: megalinter/megalinter/flavors/python@beta
+      env:
+        ENABLE: ${{inputs.lints}}
+        FILTER_REGEX_EXCLUDE: ('*\.config\.py'|'ansible-playbooks/bucket\.*')
+        EXCLUDED_DIRECTORIES: workflows
