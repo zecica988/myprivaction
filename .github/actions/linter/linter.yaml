@@ -1,0 +1,28 @@
+name: Lint Code Base
+description: The composite actions for megalinter
+inputs:
+  lints:
+    type: string
+    default: PYTHON,YAML,BASH
+  excluded_regex:
+    type: string
+    default: '"*\.config\.py"|"ansible-playbooks/bucket\.*"'
+  excluded_dirs: 
+    type: string
+    default: workflows
+
+runs:
+  using: "composite"
+    name: Lint Code Base
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Megalinter
+      uses: megalinter/megalinter/flavors/python@beta
+      env:
+        ENABLE: ${{inputs.lints}}
+        FILTER_REGEX_EXCLUDE: ${{inputs.excluded_regex}}
+        EXCLUDED_DIRECTORIES: ${{inputs.excluded_dirs}}
