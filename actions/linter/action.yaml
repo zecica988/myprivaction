@@ -2,13 +2,13 @@ name: Lint Code Base
 description: The composite actions for megalinter
 inputs:
   lints:
-    type: string
+    required: false
     default: PYTHON,YAML,BASH
   excluded_regex:
-    type: string
+    required: false
     default: '"*\.config\.py"|"ansible-playbooks/bucket\.*"'
   excluded_dirs: 
-    type: string
+    required: false
     default: workflows
 
 runs:
