@@ -18,7 +18,7 @@ jobs:
         fetch-depth: 0
     - name: Megalinter
       uses: megalinter/megalinter/flavors/python@beta
-      env:
+      with:
         ENABLE: ${{inputs.lints}}
         FILTER_REGEX_EXCLUDE: ('*\.config\.py'|'ansible-playbooks/bucket\.*')
         EXCLUDED_DIRECTORIES: workflows
