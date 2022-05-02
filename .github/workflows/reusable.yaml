@@ -6,9 +6,9 @@ on:
       lints:
         type: string
         default: PYTHON,YAML,BASH
-#      excluded_regex:
-#        type: string
-#        default: *\.config\.py'|'ansible-playbooks/bucket\.*
+      excluded_regex:
+        type: string
+        default: *\.config\.py'|'ansible-playbooks/bucket\.*
       excluded_dirs: 
         type: string
         default: workflows
@@ -25,5 +25,5 @@ jobs:
       uses: megalinter/megalinter/flavors/python@beta
       env:
         ENABLE: ${{inputs.lints}}
-#        FILTER_REGEX_EXCLUDE: '${{inputs.excluded_regex}}'
+        FILTER_REGEX_EXCLUDE: '${{inputs.excluded_regex}}'
         EXCLUDED_DIRECTORIES: ${{inputs.excluded_dirs}}
