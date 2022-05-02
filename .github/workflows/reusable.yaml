@@ -8,7 +8,7 @@ on:
         default: PYTHON,YAML,BASH
       excluded_regex:
         type: string
-        default: *\.config\.py'|'ansible-playbooks/bucket\.*
+        default: '"*\.config\.py"|"ansible-playbooks/bucket\.*"'
       excluded_dirs: 
         type: string
         default: workflows
