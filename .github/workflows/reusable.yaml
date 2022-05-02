@@ -23,7 +23,7 @@ jobs:
         fetch-depth: 0
     - name: Megalinter
       uses: megalinter/megalinter/flavors/python@beta
-      with:
+      env:
         ENABLE: ${{inputs.lints}}
 #        FILTER_REGEX_EXCLUDE: '${{inputs.excluded_regex}}'
         EXCLUDED_DIRECTORIES: ${{inputs.excluded_dirs}}
