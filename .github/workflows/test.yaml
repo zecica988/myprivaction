@@ -1,0 +1,11 @@
+name: test
+
+on:
+  push
+  
+jobs:
+  init:
+    runs-on: self-hosted
+    steps:
+    - run: echo 'hello hello'
+    - run: echo $HOSTNAME
