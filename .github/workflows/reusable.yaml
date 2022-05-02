@@ -25,5 +25,5 @@ jobs:
       uses: megalinter/megalinter/flavors/python@beta
       env:
         ENABLE: ${{inputs.lints}}
-        FILTER_REGEX_EXCLUDE: '${{inputs.excluded_regex}}'
+        FILTER_REGEX_EXCLUDE: ${{inputs.excluded_regex}}
         EXCLUDED_DIRECTORIES: ${{inputs.excluded_dirs}}
